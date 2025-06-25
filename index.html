@@ -38,6 +38,50 @@
 
         <!-- Cards de ação -->
         <section class="actions">
+            <div class="card product-card" data-tilt>
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M8 12l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3>Minha ORBE</h3>
+                    <p>Descubra sua beleza autêntica</p>
+                    <a href="https://wa.me/558695857645?text=Olá! Vim pelo link da bio e gostaria de adquirir minha Orbe." 
+                       class="card-button" target="_blank" rel="noopener noreferrer">
+                        <span>Adquirir</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="card about-card" data-tilt>
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <div class="card-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M9 12l2 2 4-4"/>
+                            <path d="M21 12c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"/>
+                            <path d="M3 12c.552 0 1-.448 1-1s-.448-1-1-1-1 .448-1 1 .448 1 1 1z"/>
+                        </svg>
+                    </div>
+                    <h3>Saiba sobre a ORBE</h3>
+                    <p>Conheça nossa missão e valores</p>
+                    <a href="https://orbelabel.github.io/orbelovers/somosorbe.html" 
+                       class="card-button" target="_blank" rel="noopener noreferrer">
+                        <span>Descobrir</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
             <div class="card lovers-card" data-tilt>
                 <div class="card-glow"></div>
                 <div class="card-content">
@@ -48,30 +92,9 @@
                     </div>
                     <h3>ORBE Lovers</h3>
                     <p>Faça parte da nossa comunidade exclusiva</p>
-                    <a href="https://wa.me/558695857645?text=Olá! Quero fazer parte do grupo ORBE Lovers! ✨" 
+                    <a href="https://chat.whatsapp.com/L61xsUQPud76cUuyrCnLIU" 
                        class="card-button" target="_blank" rel="noopener noreferrer">
                         <span>Participar</span>
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M7 17L17 7M17 7H7M17 7V17"/>
-                        </svg>
-                    </a>
-                </div>
-            </div>
-
-            <div class="card product-card" data-tilt>
-                <div class="card-glow"></div>
-                <div class="card-content">
-                    <div class="card-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <path d="M8 12l2 2 4-4"/>
-                        </svg>
-                    </div>
-                    <h3>Meu ORBE</h3>
-                    <p>Descubra sua beleza autêntica</p>
-                    <a href="https://wa.me/558695857645?text=Olá! Quero o meu ORBE! ✨ Gostaria de saber mais sobre o produto e como adquirir." 
-                       class="card-button" target="_blank" rel="noopener noreferrer">
-                        <span>Adquirir</span>
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M7 17L17 7M17 7H7M17 7V17"/>
                         </svg>
@@ -312,6 +335,11 @@
             animation-fill-mode: both;
         }
 
+        .card:nth-child(3) {
+            animation-delay: 0.4s;
+            animation-fill-mode: both;
+        }
+
         .card-glow {
             position: absolute;
             top: -50%;
@@ -358,6 +386,10 @@
             color: white;
         }
 
+        .about-card .card-icon {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+        }
+
         .card h3 {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
@@ -386,9 +418,17 @@
             font-size: 0.9rem;
         }
 
+        .about-card .card-button {
+            background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+        }
+
         .card-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
+        }
+
+        .about-card .card-button:hover {
+            box-shadow: 0 10px 20px rgba(108, 92, 231, 0.3);
         }
 
         .card-button:active {
@@ -399,7 +439,7 @@
         .motto {
             text-align: center;
             position: relative;
-            animation: fadeInUp 1s ease-out 0.4s both;
+            animation: fadeInUp 1s ease-out 0.6s both;
         }
 
         .motto-content {
