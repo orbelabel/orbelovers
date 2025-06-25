@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ORBE - Beleza que vem de dentro</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Gradientes e cores tema - Marca ORBE */
+        :root {
+            --gradient-primary: linear-gradient(135deg, #d04f76 0%, #f296a4 100%);
+            --gradient-secondary: linear-gradient(135deg, #f296a4 0%, #d04f76 100%);
+            --gradient-tertiary: linear-gradient(135deg, #fae7e7 0%, #f296a4 100%);
+            --gradient-wellness: linear-gradient(135deg, #fae7e7 0%, rgba(242, 150, 164, 0.3) 100%);
+            --color-primary: #d04f76;
+            --color-secondary: #f296a4;
+            --color-accent: #fae7e7;
+            --color-dark: #222222;
+            --color-light: #fae7e7;
+        }
+        
+        /* Header Hero Section */
+        .hero {
+            background: var(--gradient-primary);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="1" fill="rgba(255,255,255,0.1)"/><circle cx="80" cy="80" r="1.5" fill="rgba(255,255,255,0.08)"/><circle cx="40" cy="60" r="0.8" fill="rgba(255,255,255,0.12)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+            opacity: 0.3;
+        }
+        
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .orbe-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 1rem;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.orbe-logo img {
+    max-width: 80%;
+    height: auto;
+    width: 507.2px; /* 634 * 0.8 */
+    max-height: 220px; /* 275 * 0.8 */
+    filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+}
+
+@media (max-width: 768px) {
+    .orbe-logo {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .orbe-logo img {
+        width: 80%;
+        max-width: 100%;
+    }
+}
+        
+        @keyframes glow {
+            from { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 20px rgba(255,255,255,0.5); }
+            to { text-shadow: 2px 2px 4px rgba(0,0,0,0.3), 0 0 30px rgba(255,255,255,0.8); }
+        }
+        
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 3rem;
+            opacity: 0.85;
+        }
+        
+        .cta-button {
+            background: var(--gradient-secondary);
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        /* Floating elements */
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-secondary);
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .floating-element:nth-child(2) {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #fae7e7 0%, #f296a4 100%);
+            top: 70%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+        
+        .floating-element:nth-child(3) {
+            width: 100px;
+            height: 100px;
+            background: var(--gradient-wellness);
+            top: 40%;
+            right: 20%;
+            animation-delay: 4s;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+        
+        /* Benefits Section */
+        .benefits-section {
+            background: var(--gradient-wellness);
+            padding: 5rem 0;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: var(--color-dark);
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            width: 100px;
+            height: 4px;
+            background: var(--gradient-primary);
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+        
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .benefit-card h3 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .benefit-card p {
+            color: var(--color-dark);
+            opacity: 0.8;
+        }
+        
+        /* Problems Section */
+        .problems-section {
+            background: linear-gradient(135deg, #d04f76 0%, #f296a4 50%, #fae7e7 100%);
+            padding: 5rem 0;
+            color: white;
+            position: relative;
+        }
+        
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .problem-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .problem-item:hover {
+            background: rgba(255,255,255,0.2);
+            transform: scale(1.02);
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            background: var(--color-light);
+            padding: 5rem 0;
+        }
+        
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .faq-question {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 1.5rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        
+        .faq-question:hover {
+            opacity: 0.9;
+        }
+        
+        .faq-answer {
+            padding: 1.5rem;
+            color: var(--color-dark);
+            display: none;
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        /* Tips Section */
+        .tips-section {
+            background: var(--gradient-secondary);
+            padding: 5rem 0;
+            color: white;
+        }
+        
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
+        .tip-card {
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .tip-card h3 {
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+        
+        /* Final CTA */
+        .final-cta {
+            background: var(--color-dark);
+            padding: 5rem 0;
+            text-align: center;
+            color: white;
+        }
+        
+        .final-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            
+            
+            
+            .orbe-logo {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .benefits-grid,
+            .problems-grid,
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        
+        <div class="hero-content">
+            <div class="orbe-logo">
+                <img src="https://i.ibb.co/nMpMqm3z/Logo-Disposi-o-branco.png" alt="ORBE Logo">
+            </div>
+            <p class="hero-description">
+                Suplemento alimentar em cápsulas com 16 ativos poderosos, desenvolvido para fortalecimento e saúde de cabelo, pele e unhas. Atua de dentro para fora, nutrindo o organismo e oferecendo muito mais que estética: é saúde e bem-estar!
+            </p>
+            <a href="#benefits" class="cta-button">Descubra os Benefícios</a>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="benefits-section">
+        <div class="container">
+            <h2 class="section-title fade-in">O que é o ORBE?</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card fade-in">
+                    <h3>💊 16 Ativos Poderosos</h3>
+                    <p>Fórmula exclusiva com 16 ingredientes cuidadosamente selecionados para máxima eficácia e resultados visíveis.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <h3>💇‍♀️ Cabelo Forte</h3>
+                    <p>Fortalece os fios desde a raiz, reduzindo a queda e promovendo crescimento saudável.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <h3>✨ Pele Radiante</h3>
+                    <p>Nutre a pele de dentro para fora, combatendo o envelhecimento e proporcionando viço natural.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <h3>💅 Unhas Resistentes</h3>
+                    <p>Fortalece as unhas, reduzindo a quebra e promovendo crescimento saudável.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <h3>🛡️ Imunidade</h3>
+                    <p>Fortalece o sistema imunológico, oferecendo proteção adicional ao organismo.</p>
+                </div>
+                <div class="benefit-card fade-in">
+                    <h3>⚡ Mais Energia</h3>
+                    <p>Combate o cansaço e a fadiga, proporcionando mais disposição no dia a dia.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problems Section -->
+    <section class="problems-section">
+        <div class="container">
+            <h2 class="section-title">ORBE Resolve Estes Problemas:</h2>
+            <div class="problems-grid">
+                <div class="problem-item fade-in">
+                    <h3>🚫 Queda de Cabelo</h3>
+                    <p>Reduz significativamente a queda e quebra de unhas</p>
+                </div>
+                <div class="problem-item fade-in">
+                    <h3>👵 Pele Envelhecida</h3>
+                    <p>Combate flacidez e falta de viço na pele</p>
+                </div>
+                <div class="problem-item fade-in">
+                    <h3>🤒 Baixa Imunidade</h3>
+                    <p>Fortalece as defesas naturais do organismo</p>
+                </div>
+                <div class="problem-item fade-in">
+                    <h3>😴 Cansaço e Fadiga</h3>
+                    <p>Aumenta disposição e energia para o dia a dia</p>
+                </div>
+                <div class="problem-item fade-in">
+                    <h3>🦴 Problemas Articulares</h3>
+                    <p>Ajuda com dores nas articulações e musculares</p>
+                </div>
+                <div class="problem-item fade-in">
+                    <h3>⚖️ Desequilíbrio Hormonal</h3>
+                    <p>Auxilia no equilíbrio hormonal natural</p>
+                </div>
+                <div class="problem-item fade-in">
+                    <h3>🍫 Compulsão por Doces</h3>
+                    <p>O Cromo ajuda a controlar a fome e compulsão</p>
+                </div>
+                <div class="problem-item fade-in">
+                    <h3>⏰ Envelhecimento Precoce</h3>
+                    <p>Combate o estresse oxidativo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="faq-container">
+                <h2 class="section-title">Principais Dúvidas</h2>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Tem contraindicação? ▼
+                    </div>
+                    <div class="faq-answer">
+                        Gestantes, lactantes e pessoas com doenças pré-existentes devem consultar um médico. Fora isso, é um suplemento seguro.
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Quantas cápsulas tomar? ▼
+                    </div>
+                    <div class="faq-answer">
+                        2 cápsulas ao dia, preferencialmente com alguma refeição.
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Em quanto tempo vejo resultado? ▼
+                    </div>
+                    <div class="faq-answer">
+                        Primeiros resultados podem aparecer em 30 dias, mas o ideal é o uso contínuo de 3 meses.
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Engorda? ▼
+                    </div>
+                    <div class="faq-answer">
+                        Não engorda. Não contém calorias suficientes para isso. Pelo contrário, o Cromo ajuda no controle da fome e compulsão.
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Causa espinha? ▼
+                    </div>
+                    <div class="faq-answer">
+                        Pelo contrário. Muitos ativos como Zinco, Vitamina B3 e Semente de Uva melhoram a pele e combatem acne.
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Tem registro na Anvisa? ▼
+                    </div>
+                    <div class="faq-answer">
+                        Sim, é um suplemento devidamente regulamentado, seguro e autorizado.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tips Section -->
+    <section class="tips-section">
+        <div class="container">
+            <h2 class="section-title">Dicas para Melhores Resultados</h2>
+            <p style="text-align: center; margin-bottom: 3rem; font-size: 1.2rem;">Evite estes erros comuns:</p>
+            <div class="tips-grid">
+                <div class="tip-card fade-in">
+                    <h3>🔄 Seja Constante</h3>
+                    <p>Não tome só alguns dias e pare. Suplemento não faz milagre, é construção diária. A constância é fundamental para resultados duradouros.</p>
+                </div>
+                <div class="tip-card fade-in">
+                    <h3>⏱️ Tenha Paciência</h3>
+                    <p>Não queira resultado imediato. A regeneração celular leva tempo. O ciclo do cabelo, por exemplo, é de 3 meses em média.</p>
+                </div>
+                <div class="tip-card fade-in">
+                    <h3>🥗 Cuide da Alimentação</h3>
+                    <p>Suplemento complementa, não substitui uma alimentação equilibrada. Mantenha uma dieta rica em nutrientes.</p>
+                </div>
+                <div class="tip-card fade-in">
+                    <h3>📅 Tome Corretamente</h3>
+                    <p>Tome todos os dias, na quantidade indicada. A regularidade é essencial para que os ativos façam efeito.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Você não está comprando só beleza</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 2rem;">
+                Está investindo em saúde, autoestima, bem-estar e qualidade de vida!
+            </p>
+            <a href="https://wa.me/558695857645?text=Quero%20transformar%20minha%20vida%20com%20a%20Orbe%21" class="cta-button">Quero Transformar Minha Vida</a>
+        </div>
+    </section>
+
+    <script>
+        // FAQ Toggle
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Scroll animations
+        function handleScrollAnimations() {
+            const elements = document.querySelectorAll('.fade-in');
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Initialize animations on scroll
+        window.addEventListener('scroll', handleScrollAnimations);
+        window.addEventListener('load', handleScrollAnimations);
+        
+        // Parallax effect for floating elements
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            
+            document.querySelectorAll('.floating-element').forEach((element, index) => {
+                element.style.transform = `translateY(${rate * (index + 1)}px) rotate(${scrolled * 0.1}deg)`;
+            });
+        });
+    </script>
+</body>
+</html>
